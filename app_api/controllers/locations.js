@@ -49,13 +49,15 @@ module.exports.locationsCreate = function(req, res){
 module.exports.locationsListByDistance = function(req, res){
 	var lng = parseFloat(req.query.lng);
 	var lat = parseFloat(req.query.lat);
+	var maxDistance = parseFloat(req.query.maxDistance);
+	console.log(maxDistance);
 	var point = {
 		type: "Point",
 		coordinates: [lng, lat]
 	};
 	var geoOptions = {
 		spherical: true,
-		maxDistance: theEarth.getRadsFromDistance(20),
+		maxDistance: theEarth.getRadsFromDistance(maxDistance),
 		num: 10
 	};
 	if (!lng || !lat){

@@ -23,8 +23,7 @@ var locationListCtrl = function($scope, loc8rData,geolocation){
     $scope.getData = function(position){
 		var lat = position.coords.latitude;
 		var lng = position.coords.longitude;
-		console.log(lng);
-		console.log(lat);
+		
 		$scope.message = "Searching for nearby place";
 		loc8rData.locationByCoords(lat, lng)
 	        .then (function successCallback(data){

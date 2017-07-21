@@ -4,7 +4,8 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+//require('./routes')(app);
+//require('./app_api/routes')(app);
 require('./app_api/models/db');
 var uglifyJs = require("uglify-js");
 var fs = require('fs');
@@ -21,11 +22,17 @@ app.set('view engine', 'jade');
 var appClientFiles = {
     'app.js' : fs.readFileSync('app_client/app.js', 'utf8'),
     'home.controller.js' : fs.readFileSync('app_client/home/home.controller.js', 'utf8'),
+    'about.controller.js': fs.readFileSync('app_client/about/about.controller.js', 'utf8'),
     'geolocation.service.js' : fs.readFileSync('app_client/common/services/geolocation.service.js', 'utf8'),
     'loc8rData.service.js' : fs.readFileSync('app_client/common/services/loc8rData.service.js', 'utf8'),
     'formatDistance.filter.js' : fs.readFileSync('app_client/common/filters/formatDistance.filter.js', 'utf8'),
-    'ratingStars.directive.js' : fs.readFileSync('app_client/common/directives/ratingStars.directive.js', 'utf8')
-
+    'ratingStars.directive.js' : fs.readFileSync('app_client/common/directives/ratingStars.directive.js', 'utf8'),
+    'footerGeneric.directive.js' : fs.readFileSync('app_client/common/directives/footerGeneric/footerGeneric.directive.js', 'utf8'),
+    'navigation.directive.js' : fs.readFileSync('app_client/common/directives/navigation/navigation.directive.js', 'utf8'),
+    'pageHeader.directive.js' : fs.readFileSync('app_client/common/directives/pageHeader/pageHeader.directive.js', 'utf8'),
+    'addHtmlLineBreaks.filter.js' : fs.readFileSync('app_client/common/filters/addHtmlLineBreaks.filter.js', 'utf8'),
+    'locationDetail.controller.js' : fs.readFileSync('app_client/locationDetail/locationDetail.controller.js', 'utf8'),
+    'reviewModal.controller.js' : fs.readFileSync('app_client/reviewModal/reviewModal.controller.js', 'utf8')
     // 'app_client/app.js',
     // 'app_client/home/home.controller.js',
     // 'app_client/common/services/geolocation.service.js',
@@ -86,5 +93,8 @@ app.use(function(err, req, res, next) {
     });
 });
 
+app.use(function(req, res) {
+    res.sendfile(path.join(__dirname, 'app_client', 'index.html'));
+});
 
 module.exports = app;

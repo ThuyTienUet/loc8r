@@ -2,6 +2,10 @@ angular
   .module('loc8rApp')
   .controller('homeCtrl', homeCtrl);
 
+if (window.location.pathname !== '/') {
+	window.location.href = '/#' + window.location.pathname;
+}
+
 homeCtrl.$inject = ['$scope', 'loc8rData', 'geolocation'];
 function homeCtrl ($scope, loc8rData, geolocation) {
 	var vm = this;

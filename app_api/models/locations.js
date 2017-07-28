@@ -11,7 +11,7 @@ var reviewSchema = new mongoose.Schema({
         min: 0,
         max: 5
     },
-    reviewText: {
+    reviewText:{
         type: String,
         required: true
     },
@@ -50,8 +50,8 @@ var locationSchema = new mongoose.Schema({
     // Always store coordinates longitude, latitude order.
     coords: {
         type: [Number],
-        index: '2dsphere'
-       // required: true
+        index: '2dsphere',
+        required: true
     },
     openingTimes: [openingTimeSchema],
     reviews: [reviewSchema]

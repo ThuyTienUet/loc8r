@@ -51,4 +51,4 @@ module.exports.login = function(req, res) {
             sendJSONresponse(res, 401, info);
         }
     })(req, res);
-}   
+};

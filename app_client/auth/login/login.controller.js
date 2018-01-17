@@ -32,7 +32,7 @@
                 })
                 .then(function(){
                     $location.search('page', null);
-                    $location.path(vm.returnPage);
+                    $location.path('/home');
                 });
         };
     }
